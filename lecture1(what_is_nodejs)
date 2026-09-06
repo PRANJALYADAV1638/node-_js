@@ -1,0 +1,381 @@
+/*
+
+Node.js is an open-source, cross-platform JavaScript runtime environment that allows developers to run JavaScript code outside a web browser.
+
+Traditionally, JavaScript was used only in web browsers (Chrome, Firefox, Edge, etc.) to make web pages interactive. Node.js changed this by enabling JavaScript to run on servers, desktop applications, command-line tools, APIs, and more.
+
+Node.js was created in 2009 by Ryan Dahl.
+
+Why Was Node.js Created?
+
+Before Node.js:
+
+JavaScript ran only in browsers.
+Server-side applications were typically written in languages like:
+PHP
+Java
+Python
+C#
+Ruby
+
+Developers had to use:
+
+JavaScript for the frontend
+Another language for the backend
+
+Node.js solved this problem by allowing developers to use JavaScript for both frontend and backend development.
+
+How Node.js Works
+
+Node.js is built on Google's V8 JavaScript Engine, the same engine used in the browser developed by Google.
+
+Traditional Server Model
+
+Most traditional web servers use:
+
+Request 1 -> Thread 1
+Request 2 -> Thread 2
+Request 3 -> Thread 3
+
+Each request gets its own thread.
+
+Problems:
+
+High memory usage
+Limited scalability
+Thread management overhead
+Node.js Model
+
+Node.js uses:
+
+Single-threaded architecture
+Event Loop
+Non-blocking I/O
+Asynchronous programming
+Client Requests
+       |
+       V
+   Event Loop
+       |
+       V
+Background Operations
+
+Instead of waiting for operations like:
+
+Database queries
+File reading
+API calls
+
+Node.js continues processing other requests.
+
+This makes Node.js very fast and efficient.
+
+Example
+Synchronous (Blocking)
+const fs = require('fs');
+
+const data = fs.readFileSync('file.txt');
+console.log(data.toString());
+
+console.log("Done");
+
+Execution:
+
+Read File
+↓
+Wait
+↓
+Print File
+↓
+Done
+
+The program waits until the file is completely read.
+
+Asynchronous (Non-Blocking)
+const fs = require('fs');
+
+fs.readFile('file.txt', (err, data) => {
+    console.log(data.toString());
+});
+
+console.log("Done");
+
+Output:
+
+Done
+File Content
+
+Node.js doesn't wait for the file operation to finish.
+
+Key Features of Node.js
+1. Single Threaded
+
+Node.js uses a single main thread for handling requests.
+
+Benefits:
+
+Less memory usage
+Fast execution
+Efficient resource management
+2. Event-Driven Architecture
+
+Everything revolves around events.
+
+Example:
+
+button.on('click', function() {
+    console.log("Clicked");
+});
+
+Node.js applications listen for events and react when they occur.
+
+3. Non-Blocking I/O
+
+Operations like:
+
+File handling
+Database queries
+Network requests
+
+run asynchronously.
+
+This allows Node.js to serve thousands of users simultaneously.
+
+4. Cross Platform
+
+Node.js runs on:
+
+Windows
+Linux
+macOS
+
+The same code can work across platforms.
+
+5. Fast Execution
+
+Node.js uses the V8 Engine, which compiles JavaScript into machine code.
+
+Benefits:
+
+Faster execution
+Better performance
+Node.js Architecture
+Application
+      |
+      V
+Node APIs
+      |
+      V
+Event Loop
+      |
+      V
+Thread Pool
+      |
+      V
+Operating System
+Components
+Event Loop
+
+The heart of Node.js.
+
+Responsibilities:
+
+Handles requests
+Executes callbacks
+Manages asynchronous tasks
+Thread Pool
+
+Used for heavy operations such as:
+
+File system tasks
+Cryptography
+DNS lookups
+
+Managed internally by Node.js.
+
+What Can You Build with Node.js?
+1. Web Servers
+
+Example:
+
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+    res.end('Hello World');
+});
+
+server.listen(3000);
+2. REST APIs
+
+Popular for:
+
+Mobile backends
+Web applications
+SaaS products
+
+Example:
+
+User management APIs
+E-commerce APIs
+3. Real-Time Applications
+
+Such as:
+
+Chat applications
+Multiplayer games
+Live notifications
+
+Examples include applications similar to:
+
+WhatsApp
+Discord
+4. Streaming Applications
+
+Examples:
+
+Video streaming
+Audio streaming
+Live broadcasts
+5. Microservices
+
+Large applications often split functionality into small services.
+
+Node.js is commonly used for microservice architectures.
+
+6. Command-Line Tools
+
+Examples:
+
+npm
+npx
+create-react-app
+
+Many popular CLI tools are built with Node.js.
+
+Node.js Modules
+
+Node.js provides built-in modules.
+
+Examples:
+
+Module	Purpose
+http	Create web servers
+fs	File system operations
+path	File paths
+os	Operating system info
+events	Event handling
+crypto	Encryption
+
+Example:
+
+const os = require('os');
+
+console.log(os.platform());
+NPM (Node Package Manager)
+
+Node.js comes with NPM, the world's largest software package registry.
+
+NPM allows developers to install libraries easily.
+
+Example:
+
+npm install express
+
+Popular packages:
+
+Express.js
+Axios
+Lodash
+Mongoose
+Socket.IO
+Node.js vs Browser JavaScript
+Feature	Browser JS	Node.js
+Runs in Browser	✅	❌
+Runs on Server	❌	✅
+Access File System	❌	✅
+Access DOM	✅	❌
+Create APIs	❌	✅
+Database Access	❌	✅
+Advantages of Node.js
+
+✅ Fast execution
+
+✅ Large ecosystem (NPM)
+
+✅ JavaScript everywhere
+
+✅ Excellent for real-time apps
+
+✅ Scalable
+
+✅ Lightweight
+
+✅ Huge community support
+
+Disadvantages of Node.js
+
+❌ Not ideal for CPU-intensive tasks
+
+Examples:
+
+Video rendering
+Heavy scientific calculations
+Machine learning training
+
+Because the main thread can become blocked.
+
+❌ Callback complexity (though modern JavaScript uses Promises and async/await)
+
+Example:
+
+async function getUser() {
+    const user = await fetchUser();
+    return user;
+}
+Popular Frameworks in Node.js
+Express.js
+
+Most popular Node.js web framework.
+
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+    res.send('Hello');
+});
+NestJS
+
+Enterprise-grade framework built with TypeScript.
+
+Fastify
+
+High-performance alternative to Express.
+
+Koa
+
+Lightweight framework created by the Express team.
+
+Typical Node.js Request Flow
+User Request
+      |
+      V
+Node.js Server
+      |
+      V
+Route Handler
+      |
+      V
+Database/API
+      |
+      V
+Response
+      |
+      V
+User
+In Simple Terms
+
+Think of Node.js as:
+
+"A tool that allows JavaScript to run outside the browser, enabling developers to build servers, APIs, real-time applications, and backend systems using JavaScript."
+
+*/
