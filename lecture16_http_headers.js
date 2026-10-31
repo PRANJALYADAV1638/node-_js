@@ -7,7 +7,9 @@ res as they represent the meat data accosited with the api
 req &res
 meta data => data of data
 headers carry information for thr req and res body
+ always add the x in front of ctom header tako ptya chl jai ki build in header nhi ha custom header ha
  
 res header 
-req header
+req header\
+
  */
