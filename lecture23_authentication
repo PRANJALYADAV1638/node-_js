@@ -1,0 +1,37 @@
+/*
+
+Authentication is the process of verifying a user's identity.
+
+Example: When you log in using your email and password, the server checks whether your credentials are correct.
+
+Authentication vs Authorization:
+- Authentication = Who are you?
+- Authorization = What are you allowed to access?
+
+
+2 patern -> statefull-> which maintain state of data or server side 
+stateless -> which have no state
+ 
+         login 
+client ----------->  server 
+      <------------
+        uid
+
+        how uid transfer   ==>>  by cookies , headers, response
+
+        **express flow**
+        client ------> auth middleware-------> endpoint route
+                           |
+                           |
+                           |
+                           V
+                check for cookies vlaue or uid if valid call next
+                else reject the request
+
+
+
+
+uuid --> used to create session id
+                */
+
+                        
